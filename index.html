@@ -1,1 +1,220 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Directory with Snowflakes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #FF4500, white); /* Reddish-orange to white gradient */
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden; /* Only hide horizontal overflow */
+        }
+        h1 {
+            text-align: center;
+            color: white;
+        }
+        .title-container {
+            background: linear-gradient(to bottom, black, cyan);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.8); /* Subtle glowing effect for the title */
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .code-box {
+            background: linear-gradient(to bottom, black, cyan);
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            width: 100%;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5); /* Subtle glow effect */
+            text-decoration: none;
+            color: white;
+            transition: transform 0.2s, box-shadow 0.4s;
+        }
+        .code-box h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .code-box pre {
+            background-color: rgba(255, 255, 255, 0.1); /* Make code block background slightly transparent */
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            color: #fff; /* Ensure code text is visible */
+        }
+        .code-box:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 1); /* Stronger glowing effect on hover */
+        }
+
+        /* Footer styles matching containers */
+        footer {
+            background: linear-gradient(to bottom, black, cyan); /* Same gradient as the containers */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5); /* Same glowing effect as containers */
+            text-align: center;
+            color: white;
+            margin-top: 20px;
+            border-top: 2px solid #ccc;
+        }
+        footer address {
+            font-style: normal;
+            margin-top: 10px;
+            color: #fff;
+        }
+        #time, #date, #ip-info {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Snowflake styles */
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            z-index: 9999;
+            color: white;
+            font-size: 24px;
+            animation: fall linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="title-container">
+        <h1>HARU WEBSITES</h1>
+    </div>
+    
+    <div class="container">
+        <a href="https://haru-minipinterest.myvnc.com/" target="_blank" class="code-box">
+            <h2>MINI PINTEREST</h2>
+            <pre>
+—wala lang to basta eme eme lang
+            </pre>
+        </a>
+        <a href="https://haru-spotifydl.myvnc.com/" target="_blank" class="code-box">
+            <h2>SPOTIFY DOWNLOADER</h2>
+            <pre>
+—via link lang to men 
+            </pre>
+        </a>
+        <a href="https://haru-gpt4.myvnc.com/" target="_blank" class="code-box">
+            <h2>GPT-4</h2>
+            <pre>
+—gpt-4 na madalas may topak
+            </pre>
+        </a>
+        <a href="https://haru-antirejection.myvnc.com/" target="_blank" class="code-box">
+            <h2>ANTI-REJECTION</h2>
+            <pre>
+—iwas reject sa crush mo
+            </pre>
+        </a>
+        <a href="https://haru-profile.myvnc.com/" target="_blank" class="code-box">
+            <h2>PORTFOLIO</h2>
+            <pre>
+—my profile bebs visit mo hehe
+            </pre>
+        </a>
+        <a href="https://haru-ttdl.myvnc.com/" target="_blank" class="code-box">
+            <h2>TIKTOK DOWNLOADER</h2>
+            <pre>
+—no watermark tapos walang ads te
+            </pre>
+        </a>
+        <a href="https://haru-reeldl.myvnc.com/" target="_blank" class="code-box">
+            <h2>REELS DOWNLOADER</h2>
+            <pre>
+—walang ads tapos mabilis
+            </pre>
+        </a>
+        <a href="#" target="_blank" class="code-box">
+            <h2>SOONER</h2>
+            <pre>
+-SUGGEST?!!?!
+            </pre>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <span id="date"></span>
+        <span id="time"></span>
+        <span id="ip-info">Loading IP information...</span>
+        <span>© 2024 Haru. All rights reserved.</span>
+    </footer>
+
+    <!-- Snowflakes -->
+    <script>
+        // Function to create snowflakes
+        function createSnowflake() {
+            const snowflake = document.createElement("div");
+            snowflake.classList.add("snowflake");
+            snowflake.textContent = "❄"; // Snowflake symbol
+
+            // Set random position and animation duration
+            snowflake.style.left = Math.random() * window.innerWidth + "px";
+            snowflake.style.animationDuration = (Math.random() * 3 + 2) + "s";
+
+            // Append the snowflake to the body
+            document.body.appendChild(snowflake);
+
+            // Remove snowflake after it falls
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000);
+        }
+
+        // Create snowflakes at intervals
+        setInterval(createSnowflake, 200);
+
+        // Function to update time and date in footer
+        function updateTime() {
+            const now = new Date();
+            const time = now.toLocaleTimeString();
+            const date = now.toLocaleDateString();
+
+            document.getElementById("time").textContent = "Time: " + time;
+            document.getElementById("date").textContent = "Date: " + date;
+        }
+
+        // Update time and date every second
+        setInterval(updateTime, 1000);
+
+        // Initial call to set time and date right away
+        updateTime();
+
+        // Function to get IP info and update in the footer
+        function getIPInfo() {
+            fetch("https://ipinfo.io/json?token=69a08c08599500") // Replace YOUR_TOKEN_HERE with your ipinfo.io token
+                .then(response => response.json())
+                .then(data => {
+                    const ipInfo = `IP: ${data.ip}, Location: ${data.city}, ${data.region}, ${data.country}`;
+                    document.getElementById("ip-info").textContent = ipInfo;
+                })
+                .catch(error => {
+                    document.getElementById("ip-info").textContent = "Unable to fetch IP information";
+                });
+        }
+
+        // Fetch IP info on page load
+        getIPInfo();
+    </script>
+</body>
+  </html>
+  
